@@ -5,3 +5,4 @@ __pycache__/
 # Never commit the workshop API key.
 odysseus-key.sh
 scratch/
+demos/ssh_target/.testkey/
