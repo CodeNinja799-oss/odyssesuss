@@ -89,8 +89,11 @@ class Harness:
             return False
         self.messages = session.load(target)
         self.session_path = target
-        # Every loaded message is already on disk - mark it so, by identity,
-        # or run() would rewrite the whole history back into its own file.
+        # Treat the whole loaded list - repaired tool results included - as
+        # already written, so run() never rewrites history into its own file.
+        # A repair message is reproduced identically by load() every time, so
+        # the raw log stays the ground truth and never needs the synthetic
+        # version appended back into it.
         self._written = {id(m): m for m in self.messages}
         return True
 
