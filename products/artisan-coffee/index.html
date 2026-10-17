@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goa Specialty Coffee Roasters | Artisan Beans</title>
+    <style>
+        :root {
+            --bg: #fdfbf7;
+            --text: #2d2926;
+            --accent: #d4a373;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(253, 251, 247, 0.95);
+            --transition: all 0.3s ease;
+        }
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --text: #f4f4f4;
+            --accent: #b5838d;
+            --card-bg: #2d2d2d;
+            --nav-bg: rgba(26, 26, 26, 0.95);
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: var(--transition); }
+        nav { position: sticky; top: 0; background: var(--nav-bg); padding: 1rem; display: flex; justify-content: space-between; z-index: 1000; border-bottom: 1px solid var(--accent); }
+        section { padding: 4rem 2rem; max-width: 1200px; margin: auto; }
+        .hero { display: flex; align-items: center; gap: 2rem; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: var(--card-bg); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 1rem; text-align: center; border: 1px solid var(--accent); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .accordion-content { display: none; padding: 1rem; }
+        .accordion-header { width: 100%; text-align: left; padding: 1rem; background: none; border: none; font-weight: bold; cursor: pointer; }
+        button:focus, input:focus { outline: 3px solid var(--accent); outline-offset: 2px; }
+        @media (max-width: 360px) { section { padding: 2rem 1rem; } .hero { flex-direction: column; } }
+        @media (min-width: 768px) { section { padding: 6rem 4rem; } }
+        @media (min-width: 1280px) { section { max-width: 1400px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <strong>Goa Artisan Coffee</strong>
+        <button id="theme-toggle">Toggle Dark Mode</button>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div>
+            <h1>Sun-Drenched Beans from the Heart of Goa</h1>
+            <p>Experience the vibrant, complex profiles of high-altitude Indian specialty coffee, roasted in small batches right here on the coast.</p>
+        </div>
+        <svg width="300" height="300" viewBox="0 0 100 100"><path d="M20 80 Q 50 20 80 80" stroke="var(--accent)" fill="none" stroke-width="5"/><circle cx="50" cy="40" r="15" fill="var(--accent)"/></svg>
+        <svg width="100" height="100" viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="10" stroke="var(--accent)" fill="none" stroke-width="5"/></svg>
+        <svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="var(--accent)" fill="none" stroke-width="5"/></svg>
+        <svg width="100" height="100" viewBox="0 0 100 100"><line x1="10" y1="10" x2="90" y2="90" stroke="var(--accent)" stroke-width="5"/></svg>
+    </section>
+
+    <section id="origins">
+        <h2>Our Single Origin Collection</h2>
+        <div class="card-grid">
+            <div class="card"><h3>Araku Valley</h3><p>Notes of chocolate and citrus.</p><p>₹850</p></div>
+            <div class="card"><h3>Coorg Estate</h3><p>Spicy, full-bodied roast.</p><p>₹750</p></div>
+            <div class="card"><h3>Chikmagalur</h3><p>Sweet, nutty finish.</p><p>₹800</p></div>
+            <div class="card"><h3>Wayanad</h3><p>Earthy, robust profile.</p><p>₹700</p></div>
+            <div class="card"><h3>Nilgiri Hills</h3><p>Floral, bright acidity.</p><p>₹900</p></div>
+            <div class="card"><h3>Bababudangiri</h3><p>Classic, balanced cup.</p><p>₹820</p></div>
+        </div>
+    </section>
+
+    <section id="subscription">
+        <h2>Coffee Subscription</h2>
+        <label><input type="checkbox" id="billing-toggle"> Annual Billing (Save 20%)</label>
+        <table>
+            <tr><th>Plan</th><th>Monthly</th></tr>
+            <tr><td>Starter</td><td class="price" data-m="500" data-a="400">₹500</td></tr>
+            <tr><td>Enthusiast</td><td class="price" data-m="1200" data-a="960">₹1200</td></tr>
+            <tr><td>Connoisseur</td><td class="price" data-m="2000" data-a="1600">₹2000</td></tr>
+        </table>
+    </section>
+
+    <section id="brew-guide">
+        <h2>Brew Guides</h2>
+        <button onclick="showTab('pour')">Pour Over</button>
+        <button onclick="showTab('press')">French Press</button>
+        <div id="pour" class="tab-content active">Pour over is a delicate process...</div>
+        <div id="press" class="tab-content">French press is bold and rich...</div>
+    </section>
+
+    <section id="faq">
+        <h2>FAQ</h2>
+        <div class="accordion-item">
+            <button class="accordion-header">Do you ship?</button>
+            <div class="accordion-content"><p>Yes, nationwide.</p></div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-header">Is it organic?</button>
+            <div class="accordion-content"><p>Yes, all our beans are organic.</p></div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-header">How to store?</button>
+            <div class="accordion-content"><p>Keep in a cool, dry place.</p></div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>Our Story</h2>
+        <p>In the sun-drenched landscapes of Goa, we discovered a passion for the perfect cup of coffee. Our journey began in a small shed, experimenting with beans sourced directly from the high-altitude plantations of the Western Ghats. We believe that specialty coffee is not just a beverage, but a ritual—a moment of stillness in a fast-paced world. Our roasting process is meticulous, ensuring that every batch highlights the unique terroir of the origin. We work closely with farmers to ensure fair wages and sustainable practices, because great coffee starts with respect for the land and the people who tend it. Whether you are a seasoned connoisseur or just beginning your coffee journey, we invite you to explore our curated selection and taste the difference that passion and precision make. From the first crack of the bean to the final pour, our commitment to quality is unwavering. We roast in small batches to maintain freshness, delivering the vibrant flavors of India directly to your doorstep. Join us in celebrating the art of coffee, one cup at a time. Our mission is to elevate the coffee culture in Goa and beyond, fostering a community of enthusiasts who appreciate the complexity and beauty of a well-crafted brew. We are more than just a roastery; we are a hub for coffee lovers, a place where stories are shared and connections are forged over steaming mugs of our finest roasts. Every bean tells a story of the soil, the climate, and the hands that harvested it, and we are honored to be the bridge that brings these stories to you.</p>
+    </section>
+
+    <section id="process">
+        <h2>The Roasting Process</h2>
+        <p>Our roasting process is an intricate dance of science and art. We start by selecting the finest green beans, evaluating them for moisture content, density, and screen size. Once selected, the beans are carefully roasted in our vintage drum roaster, which allows for precise control over heat and airflow. We monitor the temperature curve meticulously, aiming to unlock the hidden notes of fruit, chocolate, and spice that define our signature profiles. The first crack is a critical moment, signaling the development of the roast, and our roasters are trained to listen for the subtle changes in sound that indicate the perfect roast level. After roasting, the beans are cooled rapidly to lock in the volatile aromatic compounds that give our coffee its distinctive scent and flavor. We then allow the beans to degas for a period, ensuring that the final cup is balanced and smooth. Our quality control team cups every batch, evaluating it against our strict standards for acidity, body, and sweetness. Only the batches that meet our high expectations make it to your bag. We are obsessed with freshness, which is why we roast to order and ship immediately. This dedication to the craft ensures that you receive coffee at its peak, ready to be brewed and enjoyed. We believe that the roasting process is a continuous journey of learning and refinement, and we are constantly experimenting with new techniques and profiles to bring you the best possible coffee experience. Our commitment to excellence is reflected in every bag we produce, and we invite you to experience the dedication and care that goes into every roast.</p>
+    </section>
+
+    <section id="sustainability">
+        <h2>Sustainability</h2>
+        <p>At our roastery, sustainability is at the core of everything we do. We recognize that coffee production has a significant impact on the environment, and we are committed to minimizing our footprint. We source our beans from farms that prioritize biodiversity and soil health, using organic farming practices whenever possible. By supporting these farmers, we contribute to the preservation of the delicate ecosystems of the Western Ghats. We also focus on waste reduction in our roasting facility, composting our coffee chaff and recycling our packaging materials. Our goal is to create a circular economy, where every aspect of our business contributes to a healthier planet. We believe that specialty coffee should be a force for good, supporting the livelihoods of farmers and protecting the natural beauty of the regions where our coffee is grown. We are constantly seeking new ways to improve our sustainability efforts, from exploring compostable packaging to optimizing our energy usage. We believe that transparency is key, and we strive to share the stories of our farmers and the impact of our sourcing practices with our customers. By choosing our coffee, you are supporting a more sustainable and equitable coffee industry. We are proud to be part of a growing movement of roasters who are committed to making a difference, and we invite you to join us on this journey toward a more sustainable future. Every cup you brew is a testament to our shared commitment to the planet and the people who call it home.</p>
+    </section>
+
+    <section id="additional-info">
+        <h2>Coffee Science & Art</h2>
+        <p>Coffee is a complex beverage, with over 800 aromatic compounds that contribute to its flavor and aroma. The way we roast, grind, and brew coffee can significantly impact the final cup. We are obsessed with every detail, from the moisture content of the green beans to the water temperature used for brewing. Our roasters are trained to listen for the subtle changes in sound that indicate the perfect roast level, and our quality control team cups every batch to ensure consistency and quality. We believe that coffee is a journey, and we are excited to be a part of yours. Join us in celebrating the art of coffee, one cup at a time. We are dedicated to providing you with the best possible coffee experience, and we are always here to help you on your coffee journey. Thank you for being a part of our community, and for supporting our mission to bring the finest specialty coffee to Goa and beyond. We look forward to connecting with you and sharing our love for coffee. Our commitment to quality is reflected in every bag we produce, and we invite you to experience the dedication and care that goes into every roast. We are more than just a roastery; we are a hub for coffee lovers, a place where stories are shared and connections are forged over steaming mugs of our finest roasts. Every bean tells a story of the soil, the climate, and the hands that harvested it, and we are honored to be the bridge that brings these stories to you. We are constantly seeking new ways to improve our sustainability efforts, from exploring compostable packaging to optimizing our energy usage. We believe that transparency is key, and we strive to share the stories of our farmers and the impact of our sourcing practices with our customers. By choosing our coffee, you are supporting a more sustainable and equitable coffee industry. We are proud to be part of a growing movement of roasters who are committed to making a difference, and we invite you to join us on this journey toward a more sustainable future. Every cup you brew is a testament to our shared commitment to the planet and the people who call it home. We are grateful for your support, and we look forward to serving you for years to come. Thank you for choosing Goa Artisan Coffee.</p>
+        <p>Our roastery is located in the heart of Goa, surrounded by the natural beauty of the region. We are inspired by the landscape, the culture, and the people of Goa. We believe that coffee is a reflection of its environment, and we strive to capture the essence of Goa in every cup. We are proud to be a part of this community, and we are committed to contributing to its growth and development. We believe that coffee can bring people together, and we are honored to be a part of your daily ritual. Thank you for being a part of our community, and for supporting our mission to bring the finest specialty coffee to Goa and beyond. We look forward to connecting with you and sharing our love for coffee. We are constantly seeking new ways to improve our sustainability efforts, from exploring compostable packaging to optimizing our energy usage. We believe that transparency is key, and we strive to share the stories of our farmers and the impact of our sourcing practices with our customers. By choosing our coffee, you are supporting a more sustainable and equitable coffee industry. We are proud to be part of a growing movement of roasters who are committed to making a difference, and we invite you to join us on this journey toward a more sustainable future. Every cup you brew is a testament to our shared commitment to the planet and the people who call it home. We are grateful for your support, and we look forward to serving you for years to come. Thank you for choosing Goa Artisan Coffee.</p>
+    </section>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        toggle.addEventListener('click', () => {
+            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', document.body.dataset.theme);
+        });
+        document.body.dataset.theme = localStorage.getItem('theme') || 'light';
+
+        document.getElementById('billing-toggle').addEventListener('change', (e) => {
+            document.querySelectorAll('.price').forEach(p => {
+                p.textContent = e.target.checked ? '₹' + p.dataset.a : '₹' + p.dataset.m;
+            });
+        });
+
+        function showTab(id) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        document.querySelectorAll('.accordion-header').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
