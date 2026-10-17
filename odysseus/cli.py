@@ -29,9 +29,14 @@ def _clip(value, limit=80):
 
 
 def _printer(kind, payload):
-    """Print the conversation as it happens: text plain, calls and results compact."""
+    """Print the conversation as it happens: text plain, calls and results compact.
+
+    Text with no tool_calls is always the final answer - run_loop returns the
+    instant it sees one - so it is left for main() to print once, rather than
+    shown here and then shown again.
+    """
     if kind == "assistant":
-        if payload["text"]:
+        if payload["text"] and payload["tool_calls"]:
             print(payload["text"])
         for call in payload["tool_calls"]:
             print(f"-> {call['name']}({_clip(call['args'])})")
