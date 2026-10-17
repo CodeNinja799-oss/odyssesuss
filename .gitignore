@@ -6,3 +6,4 @@ __pycache__/
 odysseus-key.sh
 scratch/
 demos/ssh_target/.testkey/
+.odysseus/
