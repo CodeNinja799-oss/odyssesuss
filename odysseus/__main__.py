@@ -1,8 +1,8 @@
-"""Day 4 - entry point for `python3 -m odysseus`. Defers to cli.main(), a
-stub today that day 5 completes.
-"""
+"""Day 5 - entry point for `python3 -m odysseus`. The real CLI, finished."""
+
+import sys
 
 from .cli import main
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
